@@ -1,3 +1,0 @@
-[console_scripts]
-update_b_theme = b_theme_template.templates:main
-
