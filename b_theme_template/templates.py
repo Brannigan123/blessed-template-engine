@@ -60,7 +60,7 @@ def _find_templates(template_path: str, destination_path: str, unaltered: List[s
             ):
                 yield template
     else:
-        print (template_path, end="\r")
+        print(template_path, end="\r")
         if any(re.match(p, template_path) for p in unaltered):
             yield TemplateFileDetails(template_path, destination_path)
         else:
@@ -84,6 +84,7 @@ def _render_templates(templates_details: List[TemplateFileDetails]) -> None:
 
 def _run_hook(hook: List[str], substitutions: Dict[str, Any]) -> None:
     for line in hook:
+        print("running ", line, end="\r")
         cmd = shlex.split(Template(line).render(**substitutions))
         subprocess.run(
             cmd,
